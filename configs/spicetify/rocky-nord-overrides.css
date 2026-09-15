@@ -1,0 +1,283 @@
+/* =========================================================
+   ROCKY NORD — STEP 1
+   JetBrains Mono + artist title fix
+   ========================================================= */
+
+/* General UI text */
+body,
+button,
+input,
+textarea,
+select,
+option {
+    font-family:
+        "JetBrainsMono NFM",
+        "JetBrains Mono",
+        "Segoe UI",
+        sans-serif !important;
+}
+
+/* Common Spotify text classes */
+.main-type-mesto,
+.main-type-ballad,
+.main-type-canon,
+.main-type-alto,
+.main-type-minuet,
+.encore-text,
+.encore-text-body-small,
+.encore-text-body-medium,
+.encore-text-body-large {
+    font-family:
+        "JetBrainsMono NFM",
+        "JetBrains Mono",
+        "Segoe UI",
+        sans-serif !important;
+}
+
+/* Keep icon/glyph containers out of the font override */
+svg,
+path,
+[class*="Icon"],
+[class*="icon"] {
+    font-family: initial !important;
+}
+
+
+/* =========================================================
+   ARTIST HEADER TITLE FIX
+   Prevent names like "Nujabes" from wrapping letter-by-letter
+   ========================================================= */
+
+.main-entityHeader-headerText {
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+}
+
+.main-entityHeader-title,
+.main-entityHeader-titleText,
+.main-entityHeader-title h1,
+.main-entityHeader-headerText h1 {
+    width: auto !important;
+    max-width: none !important;
+    min-width: max-content !important;
+
+    white-space: nowrap !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+
+    overflow: visible !important;
+    text-overflow: clip !important;
+
+    font-family:
+        "JetBrainsMono NFM",
+        "JetBrains Mono",
+        "Segoe UI",
+        sans-serif !important;
+}
+
+/* Slightly tame oversized artist titles on narrower windows */
+@media (max-width: 1200px) {
+    .main-entityHeader-title h1,
+    .main-entityHeader-headerText h1 {
+        font-size: clamp(32px, 5vw, 64px) !important;
+        line-height: 1.05 !important;
+    }
+}
+
+/* =========================================================
+   ROCKY NORD — STEP 2
+   Sharper corners + Nord scrollbars
+   ========================================================= */
+
+:root {
+    --rocky-radius: 0px;
+    --rocky-nord-frost: #88C0D0;
+    --rocky-nord-muted: #4C566A;
+    --rocky-nord-panel: #3B4252;
+}
+
+
+/* ---------------------------------------------------------
+   GENERAL PANELS / CARDS
+   --------------------------------------------------------- */
+
+.main-card-card,
+.main-contextMenu-menu,
+.main-userWidget-box,
+.main-trackList-trackListRow,
+.main-notificationBubble-notificationBubble,
+.main-nowPlayingView-nowPlayingWidget,
+.GenericModal {
+    border-radius: var(--rocky-radius) !important;
+}
+
+
+/* ---------------------------------------------------------
+   COVER ART / IMAGES
+   --------------------------------------------------------- */
+
+.main-card-imageContainer,
+.main-card-imageContainer img,
+.main-image-image,
+.cover-art-image,
+.main-entityHeader-image {
+    border-radius: var(--rocky-radius) !important;
+}
+
+
+/* ---------------------------------------------------------
+   SEARCH / INPUTS
+   --------------------------------------------------------- */
+
+.x-searchInput-searchInput,
+input,
+textarea {
+    border-radius: var(--rocky-radius) !important;
+}
+
+
+/* ---------------------------------------------------------
+   CONTEXT MENUS / POPUPS
+   --------------------------------------------------------- */
+
+.main-contextMenu-menu,
+.main-trackCreditsModal-container {
+    border-radius: var(--rocky-radius) !important;
+}
+
+
+/* ---------------------------------------------------------
+   PLAYLIST / TRACK ROWS
+   --------------------------------------------------------- */
+
+.main-trackList-trackListRow {
+    transition: background-color 100ms ease !important;
+}
+
+.main-trackList-trackListRow:hover {
+    background-color: rgba(67, 76, 94, 0.55) !important;
+}
+
+.main-trackList-trackListRow[aria-selected="true"] {
+    background-color: var(--rocky-nord-panel) !important;
+}
+
+
+/* ---------------------------------------------------------
+   SCROLLBARS
+   --------------------------------------------------------- */
+
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--rocky-nord-muted) !important;
+    border-radius: 0 !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--rocky-nord-frost) !important;
+}
+
+
+/* ---------------------------------------------------------
+   PROGRESS / VOLUME BARS
+   --------------------------------------------------------- */
+
+.x-progressBar-progressBarBg,
+.x-progressBar-fillColor {
+    border-radius: 0 !important;
+}
+
+
+/* ---------------------------------------------------------
+   MAIN LAYOUT
+   --------------------------------------------------------- */
+
+.Root__main-view,
+.Root__right-sidebar,
+.Root__now-playing-bar {
+    border-radius: 0 !important;
+}
+
+/* =========================================================
+   ROCKY NORD — STEP 3
+   Frost accents + cleaner interaction states
+   ========================================================= */
+
+:root {
+    --rocky-frost: #88C0D0;
+    --rocky-frost-dark: #81A1C1;
+    --rocky-panel: #3B4252;
+    --rocky-panel-hover: #434C5E;
+    --rocky-text: #ECEFF4;
+    --rocky-muted: #4C566A;
+}
+
+
+/* Selected / playing track */
+.main-trackList-trackListRow[aria-selected="true"] {
+    background-color: var(--rocky-panel) !important;
+    border-left: 2px solid var(--rocky-frost) !important;
+}
+
+
+/* Hover */
+.main-trackList-trackListRow:hover {
+    background-color: rgba(67, 76, 94, 0.72) !important;
+}
+
+
+/* Links / active accents */
+a:hover,
+button:hover {
+    --text-subdued: #D8DEE9;
+}
+
+
+/* Progress and volume */
+.playback-bar .x-progressBar-fillColor,
+.volume-bar .x-progressBar-fillColor {
+    background-color: var(--rocky-frost) !important;
+}
+
+
+/* Slider handle */
+.progress-bar__slider {
+    background-color: var(--rocky-text) !important;
+}
+
+
+/* Focus outline */
+*:focus-visible {
+    outline: 1px solid var(--rocky-frost) !important;
+    outline-offset: 2px !important;
+}
+
+
+/* Selection */
+::selection {
+    background-color: var(--rocky-frost) !important;
+    color: #2E3440 !important;
+}
+
+
+/* Active sidebar/library element */
+.main-yourLibraryX-navLinkActive,
+.main-navBar-navBarLinkActive {
+    background-color: var(--rocky-panel) !important;
+    color: var(--rocky-text) !important;
+}
+
+
+/* Subtle player separation */
+.Root__now-playing-bar {
+    border-top: 1px solid var(--rocky-muted) !important;
+}
