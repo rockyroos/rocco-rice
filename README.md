@@ -38,24 +38,32 @@ Grayjay, Firefox and the terminal visualizer across the desktop.
 
 | Part | What I use |
 |---|---|
-| Window manager | GlazeWM |
-| Top bar | YASB |
-| Taskbar | Windhawk |
-| Start menu | Windhawk |
-| Explorer | Windhawk |
-| App launcher | Flow Launcher — Dark Nord |
-| Context menu | Nilesoft Shell |
-| Window switcher | CKFlip3D |
-| Terminal | Windows Terminal + PowerShell 7 |
-| System info | Fastfetch |
-| System monitor | btop4win++ |
-| Desktop clock | Rainmeter — NordClock |
-| Desktop visualizer | Rainmeter — Fountain of Colors |
-| Top-bar visualizer | Cava through YASB |
-| Spotify | Spicetify — Sleek + Nord + my overrides |
-| Discord | Vencord + my QuickCSS |
-| Main font | JetBrains Mono / JetBrainsMono Nerd Font |
-| Wallpapers | Kagurabachi |
+| Window manager | [GlazeWM](https://github.com/glzr-io/glazewm) |
+| Top bar | [YASB](https://github.com/amnweb/yasb) |
+| Taskbar | [Windhawk](https://windhawk.net/) |
+| Start menu | [Windhawk](https://windhawk.net/) |
+| Explorer | [Windhawk](https://windhawk.net/) |
+| App launcher | [Flow Launcher](https://www.flowlauncher.com/) — Nord Darker |
+| Context menu | [Nilesoft Shell](https://nilesoft.org/) |
+| Window switcher | [CKFlip3D](https://github.com/CYMERKAROL/CKFlip3D) |
+| Terminal | [Windows Terminal](https://learn.microsoft.com/windows/terminal/install) + [PowerShell 7](https://learn.microsoft.com/powershell/scripting/install/install-powershell-on-windows) |
+| System info | [Fastfetch](https://github.com/fastfetch-cli/fastfetch) |
+| System monitor | [btop4win++](https://github.com/aristocratos/btop4win) |
+| Desktop clock | [Rainmeter](https://www.rainmeter.net/) — [NordClock](configs/rainmeter/NordClock.ini) |
+| Desktop visualizer | [Rainmeter](https://www.rainmeter.net/) — [Fountain of Colors](https://github.com/alatsombath/Fountain-of-Colors) |
+| Top-bar visualizer | [Cava](https://github.com/karlstav/cava) through [YASB](https://github.com/amnweb/yasb) |
+| Spotify | [Spicetify](https://spicetify.app/) — [Sleek](https://github.com/spicetify/spicetify-themes/tree/master/Sleek) + Nord + [my overrides](configs/spicetify/rocky-nord-overrides.css) |
+| Discord | [Vencord](https://vencord.dev/) + [my QuickCSS](configs/vencord/rocky-nord.css) |
+| Main font | [JetBrains Mono](https://www.jetbrains.com/lp/mono/) / [Nerd Fonts](https://www.nerdfonts.com/font-downloads) |
+| Wallpapers | Kagurabachi — [Wallhaven](https://wallhaven.cc/) + official X posts |
+
+## Getting started
+
+This isn't a one-click setup, and I probably wouldn't recommend copying everything at once anyway.
+
+If you want to borrow parts of it, I wrote down the rough order I'd use to rebuild it, the config locations and the things that need changing on another PC:
+
+**[Installation notes →](docs/INSTALLATION.md)**
 
 ## The general idea
 
@@ -83,7 +91,7 @@ A few things are intentionally **not** included:
 - Kagurabachi wallpaper files
 - my local Rainmeter audio-device ID
 - the full Sleek Spicetify theme
-- third-party themes that are already available from their original authors
+- third-party themes/skins that are already available from their original authors
 
 ## GlazeWM
 
@@ -106,7 +114,9 @@ The pause shortcut is especially useful for games or apps that use a lot of Alt-
 
 ## YASB
 
-YASB provides the thin top bar on both displays. The main monitor includes workspaces, clock, network traffic, CPU/RAM, active window, Cava, media, sound and power controls. The portrait display is deliberately simpler.
+YASB provides the thin top bar on both displays. The main monitor includes the Windows virtual-desktop widget, clock, network traffic, CPU/RAM, active window, Cava, media, sound and power controls. The portrait display is deliberately simpler.
+
+The Windows desktop widget is separate from GlazeWM's own workspace system; I use both in the current setup.
 
 ## Windhawk
 
@@ -114,9 +124,11 @@ Windhawk does most of the Windows-side customization: taskbar styling and labels
 
 The current taskbar started from the **RosePine** preset but is heavily pushed toward the rest of the Nord setup. The Start menu uses **SideBySideMinimal** as a base with Nord colors, square corners and JetBrains Mono overrides.
 
+The repo includes both a readable summary and a snapshot of the exact settings for the enabled mods. I still recommend copying settings into the matching mod rather than treating it as a one-click import.
+
 ## Flow Launcher
 
-I use **Dark Nord** as-is. I haven't modified the theme itself, so this repo only documents it rather than redistributing it.
+I use **Nord Darker** as-is. I haven't modified the theme itself, so this repo only documents it rather than redistributing it.
 
 ## Nilesoft Shell
 
@@ -129,7 +141,7 @@ I currently use Rainmeter for two things:
 - **NordClock** — large desktop clock/date
 - **Fountain of Colors** — the equalizer above the clock
 
-The Fountain of Colors config in this repo has my local audio endpoint removed, because that value is machine-specific.
+Fountain of Colors is a third-party skin, so I don't redistribute the skin itself. The repo links to the original project and documents the settings I use. My machine-specific audio endpoint is intentionally left out.
 
 ## Spotify
 

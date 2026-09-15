@@ -1,0 +1,209 @@
+# Public-safe copy of my current YASB config, captured 15 September 2026.
+# Replace the portrait monitor name (HP E231) with your own if needed.
+# No credentials required. Primary display gets the only YASB/Cava visualizer.
+watch_stylesheet: true
+watch_config: true
+debug: false
+bars:
+  nord-main:
+    enabled: true
+    screens: ["primary"]
+    class_name: "yasb-bar"
+    alignment: {position: "top", align: "center"}
+    blur_effect:
+      enabled: true
+      dark_mode: true
+      round_corners: false
+      border_color: "None"
+    window_flags:
+      always_on_top: true
+      windows_app_bar: true
+      hide_on_fullscreen: true
+    dimensions: {width: "100%", height: 28}
+    padding: {top: 0, left: 0, bottom: 0, right: 0}
+    animation: {enabled: false}
+    widgets:
+      left: ["home", "windows_workspaces", "clock", "traffic", "cpu", "memory"]
+      center: ["active_window"]
+      right: ["cava", "media_art", "media", "sound", "power_menu"]
+  nord-portrait:
+    enabled: true
+    screens: ["HP E231"]
+    class_name: "yasb-bar"
+    alignment: {position: "top", align: "center"}
+    blur_effect:
+      enabled: true
+      dark_mode: true
+      round_corners: false
+      border_color: "None"
+    window_flags:
+      always_on_top: true
+      windows_app_bar: true
+      hide_on_fullscreen: true
+    dimensions: {width: "100%", height: 28}
+    padding: {top: 0, left: 0, bottom: 0, right: 0}
+    animation: {enabled: false}
+    widgets:
+      left: ["home"]
+      center: ["active_window"]
+      right: ["clock", "sound"]
+widgets:
+  # NOTE: this is YASB's Windows virtual-desktop widget, not a GlazeWM workspace widget.
+  windows_workspaces:
+    type: "yasb.windows_desktops.WorkspaceWidget"
+    options:
+      label_workspace_btn: "{index}"
+      label_workspace_active_btn: "[{index}]"
+      callbacks:
+        on_left: "activate_workspace"
+        on_middle: "do_nothing"
+        on_right: "toggle_context_menu"
+
+  home:
+    type: "yasb.home.HomeWidget"
+    options:
+      label: "<span>\uf015</span>"
+      blur: true
+      round_corners: false
+      border_color: "None"
+      alignment: "left"
+      direction: "down"
+      offset_top: 4
+      system_menu: true
+      power_menu: false
+      menu_list:
+        - {title: "Home", path: "C:/Users/YOUR_USERNAME"}
+        - {title: "Downloads", path: "C:/Users/YOUR_USERNAME/Downloads"}
+        - {title: "Documents", path: "C:/Users/YOUR_USERNAME/Documents"}
+        - {title: "Terminal", command: "wt.exe"}
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%H:%M}"
+      label_alt: "{%a %d %b  %H:%M}"
+      update_interval: 1000
+      calendar:
+        blur: true
+        round_corners: false
+        border_color: "None"
+        alignment: "center"
+        direction: "down"
+        show_holidays: false
+        show_week_numbers: true
+      callbacks: {on_left: "toggle_calendar", on_right: "toggle_label"}
+  traffic:
+    type: "yasb.traffic.TrafficWidget"
+    options:
+      label: "↓ {download_speed}  ↑ {upload_speed}"
+      label_alt: "↓ {download_speed}  ↑ {upload_speed}"
+      update_interval: 2000
+      speed_unit: "bytes"
+  cpu:
+    type: "yasb.cpu.CpuWidget"
+    options:
+      label: "CPU {info[percent][total]}%"
+      label_alt: "CPU {info[percent][total]}%"
+      update_interval: 3000
+      hide_decimal: true
+      histogram_num_columns: 0
+  memory:
+    type: "yasb.memory.MemoryWidget"
+    options:
+      label: "RAM {virtual_mem_percent}%"
+      label_alt: "RAM {virtual_mem_free} free"
+      update_interval: 5000
+      hide_decimal: true
+  active_window:
+    type: "yasb.active_window.ActiveWindowWidget"
+    options:
+      label: "{win[title]}"
+      label_no_window: "desktop"
+      label_icon: true
+      label_icon_size: 14
+      max_length: 32
+      max_length_ellipsis: "…"
+      monitor_exclusive: true
+  cava:
+    type: "yasb.cava.CavaWidget"
+    options:
+      source: "auto"
+      bars_number: 16
+      bar_width: 3
+      bar_spacing: 2
+      bar_height: 16
+      min_bar_height: 0
+      framerate: 30
+      sleep_timer: 5
+      hide_empty: true
+      channels: "mono"
+      mono_option: "average"
+      gradient: 0
+      foreground: "#88c0d0"
+      noise_reduction: 77
+      callbacks: {on_right: "reload_cava"}
+  media_art:
+    type: "yasb.media.MediaWidget"
+    options:
+      hide_empty: true
+      show_thumbnail: true
+      controls_only: false
+      controls_hide: true
+      max_field_size: {label: 0, label_alt: 0}
+      thumbnail_alpha: 255
+      thumbnail_padding: 0
+      thumbnail_corner_radius: 4
+  media:
+    type: "yasb.media.MediaWidget"
+    options:
+      label: "{title}"
+      label_alt: "{artist} · {title}"
+      separator: " · "
+      max_field_size: {label: 64, label_alt: 64, truncate_whole_label: true}
+      hide_empty: true
+      show_thumbnail: true
+      controls_only: false
+      controls_left: true
+      scrolling_label:
+        enabled: true
+        update_interval_ms: 30
+        style: "left"
+        separator: "  |  "
+        always_scroll: false
+      media_menu:
+        blur: true
+        round_corners: false
+        border_color: "None"
+        alignment: "right"
+        direction: "down"
+        offset_top: 4
+        thumbnail_size: 96
+        thumbnail_corner_radius: 0
+        show_source: true
+        show_volume_slider: false
+      callbacks: {on_left: "toggle_media_menu", on_right: "toggle_label"}
+  sound:
+    type: "yasb.custom.CustomWidget"
+    options:
+      class_name: "sound-widget"
+      label: "<span>\uf028</span>"
+      tooltip: true
+      tooltip_label: "Sound settings · Win+A opens quick settings"
+      callbacks:
+        on_left: 'exec cmd.exe /c start "" ms-settings:sound'
+  power_menu:
+    type: "yasb.power_menu.PowerMenuWidget"
+    options:
+      label: "\uf011"
+      uptime: true
+      show_user: true
+      blur: false
+      blur_background: true
+      animation_duration: 0
+      button_row: 3
+      buttons:
+        restart: ["\uf021", "Restart"]
+        shutdown: ["\uf011", "Shut down"]
+        sleep: ["\uf186", "Sleep"]
+        lock: ["\uf023", "Lock"]
+        signout: ["\uf08b", "Sign out"]
+        cancel: ["\uf00d", "Cancel"]

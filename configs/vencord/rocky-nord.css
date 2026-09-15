@@ -1,0 +1,997 @@
+/* ==========================================================
+   ROCKY NORD DISCORD
+   Vencord QuickCSS
+   Nord + JetBrains Mono + sharp Windows-rice styling
+   ========================================================== */
+
+
+/* ==========================================================
+   01. PALETTE / GLOBAL TOKENS
+   ========================================================== */
+
+:root,
+.theme-dark,
+.theme-midnight {
+    /* Nord */
+    --rocky-bg-0: #242933;
+    --rocky-bg-1: #2a303b;
+    --rocky-bg-2: #2e3440;
+    --rocky-bg-3: #3b4252;
+    --rocky-bg-4: #434c5e;
+    --rocky-border: #4c566a;
+
+    --rocky-text: #eceff4;
+    --rocky-text-2: #d8dee9;
+    --rocky-text-3: #aeb7c4;
+
+    --rocky-frost: #88c0d0;
+    --rocky-frost-2: #81a1c1;
+    --rocky-frost-3: #8fbcbb;
+    --rocky-blue: #5e81ac;
+
+    --rocky-green: #a3be8c;
+    --rocky-yellow: #ebcb8b;
+    --rocky-orange: #d08770;
+    --rocky-red: #bf616a;
+    --rocky-purple: #b48ead;
+
+
+    /* ---- Discord old + compatibility variables ---- */
+
+    --background-primary: var(--rocky-bg-2) !important;
+    --background-secondary: var(--rocky-bg-1) !important;
+    --background-secondary-alt: var(--rocky-bg-0) !important;
+    --background-tertiary: var(--rocky-bg-0) !important;
+    --background-floating: var(--rocky-bg-0) !important;
+
+    --background-mobile-primary: var(--rocky-bg-2) !important;
+    --background-mobile-secondary: var(--rocky-bg-1) !important;
+
+
+    /* ---- Current visual-refresh background system ---- */
+
+    --background-base-lowest: var(--rocky-bg-0) !important;
+    --background-base-lower: var(--rocky-bg-1) !important;
+    --background-base-low: var(--rocky-bg-2) !important;
+
+    --background-surface-high: var(--rocky-bg-3) !important;
+    --background-surface-higher: var(--rocky-bg-4) !important;
+    --background-surface-highest: var(--rocky-border) !important;
+
+    --background-nested-floating: var(--rocky-bg-1) !important;
+
+    --card-primary-bg: var(--rocky-bg-2) !important;
+    --card-background-default: var(--rocky-bg-2) !important;
+
+    --modal-background: var(--rocky-bg-1) !important;
+    --modal-footer-background: var(--rocky-bg-0) !important;
+
+
+    /* ---- Hover / selected ---- */
+
+    --background-message-hover: rgba(67, 76, 94, 0.34) !important;
+
+    --background-mod-subtle: rgba(67, 76, 94, 0.30) !important;
+    --background-mod-normal: rgba(67, 76, 94, 0.48) !important;
+    --background-mod-strong: rgba(76, 86, 106, 0.62) !important;
+
+    --interactive-background-hover: rgba(67, 76, 94, 0.45) !important;
+    --interactive-background-selected: rgba(136, 192, 208, 0.14) !important;
+
+
+    /* ---- Text ---- */
+
+    --header-primary: var(--rocky-text) !important;
+    --header-secondary: var(--rocky-text-2) !important;
+
+    --text-normal: var(--rocky-text) !important;
+    --text-muted: var(--rocky-text-3) !important;
+
+    --interactive-normal: var(--rocky-text-2) !important;
+    --interactive-hover: var(--rocky-text) !important;
+    --interactive-active: var(--rocky-frost) !important;
+    --interactive-muted: #616b7a !important;
+
+    --channels-default: var(--rocky-text-2) !important;
+    --channel-icon: var(--rocky-text-3) !important;
+
+
+    /* ---- Accent / brand ---- */
+
+    --brand-experiment: var(--rocky-frost) !important;
+    --brand-500: var(--rocky-frost) !important;
+    --brand-560: var(--rocky-frost-2) !important;
+    --brand-600: var(--rocky-blue) !important;
+
+    --mention-foreground: var(--rocky-frost) !important;
+
+
+    /* ---- Status ---- */
+
+    --status-positive: var(--rocky-green) !important;
+    --status-warning: var(--rocky-yellow) !important;
+    --status-danger: var(--rocky-red) !important;
+    --status-speaking: var(--rocky-frost) !important;
+
+
+    /* ---- Borders ---- */
+
+    --border-faint: rgba(76, 86, 106, 0.34) !important;
+    --border-subtle: rgba(76, 86, 106, 0.58) !important;
+    --border-normal: var(--rocky-border) !important;
+    --border-strong: #5d6879 !important;
+
+    --app-frame-border: rgba(76, 86, 106, 0.66) !important;
+
+
+    /* ---- Scrollbars ---- */
+
+    --scrollbar-auto-thumb: var(--rocky-border) !important;
+    --scrollbar-auto-track: transparent !important;
+    --scrollbar-thin-thumb: var(--rocky-border) !important;
+
+
+    /* ---- Sharp layout ---- */
+
+    --radius-xs: 0px !important;
+    --radius-sm: 0px !important;
+    --radius-md: 0px !important;
+    --radius-lg: 2px !important;
+    --radius-xl: 2px !important;
+
+
+    /* ======================================================
+       FONT
+       These variables are safer than forcing font on every
+       div and accidentally changing Discord glyph icons.
+       ====================================================== */
+
+    --font-primary:
+        "JetBrains Mono",
+        "JetBrainsMono NFM",
+        "gg sans",
+        sans-serif !important;
+
+    --font-display:
+        "JetBrainsMono NFM",
+        "JetBrains Mono",
+        "gg sans",
+        sans-serif !important;
+
+    --font-code:
+        "JetBrainsMono NFM",
+        "JetBrains Mono",
+        Consolas,
+        monospace !important;
+}
+
+
+/* ==========================================================
+   02. GENERAL TYPOGRAPHY
+   ========================================================== */
+
+body,
+button,
+input,
+textarea,
+select {
+    font-family: var(--font-primary) !important;
+}
+
+code,
+pre,
+[class*="codeBlock"],
+[class*="inlineCode"] {
+    font-family: var(--font-code) !important;
+}
+
+
+/* Don't interfere with Discord SVG/icons */
+
+svg,
+path {
+    font-family: initial !important;
+}
+
+
+/* ==========================================================
+   03. BASE APP BACKGROUNDS
+   ========================================================== */
+
+html,
+body,
+#app-mount {
+    background: var(--rocky-bg-0) !important;
+}
+
+[class*="app_"],
+[class*="base_"] {
+    background: var(--rocky-bg-0) !important;
+}
+
+
+/* Main chat */
+
+[class*="chatContent_"] {
+    background: var(--rocky-bg-2) !important;
+}
+
+
+/* Channel/sidebar */
+
+[class*="sidebarList_"] {
+    background: var(--rocky-bg-1) !important;
+}
+
+
+/* Member list */
+
+[class*="membersWrap_"],
+[class*="members_"] {
+    background: var(--rocky-bg-1) !important;
+}
+
+
+/* ==========================================================
+   04. CHANNELS
+   ========================================================== */
+
+[role="treeitem"],
+[role="listitem"] {
+    border-radius: 0 !important;
+}
+
+
+/* Selected / active */
+
+[role="treeitem"][aria-selected="true"],
+[role="listitem"] [aria-selected="true"] {
+    background: rgba(136, 192, 208, 0.13) !important;
+}
+
+
+/* Channel hover */
+
+[class*="channel_"]:hover,
+[class*="link_"]:hover {
+    background: rgba(67, 76, 94, 0.44) !important;
+}
+
+
+/* Unread / selected channel text */
+
+[class*="modeSelected_"] [class*="name_"],
+[class*="modeUnread_"] [class*="name_"] {
+    color: var(--rocky-text) !important;
+}
+
+
+/* Selected channel Frost line */
+
+[class*="modeSelected_"] {
+    box-shadow:
+        inset 2px 0 0 var(--rocky-frost) !important;
+}
+
+
+/* ==========================================================
+   05. USER PANEL
+   ========================================================== */
+
+[class*="panels_"] {
+    background: var(--rocky-bg-0) !important;
+    border-top: 1px solid var(--rocky-border) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+
+/* User-panel buttons */
+
+[class*="panels_"] button:hover {
+    background: var(--rocky-bg-3) !important;
+}
+
+
+/* ==========================================================
+   06. CHAT INPUT
+   ========================================================== */
+
+[class*="channelTextArea_"],
+[class*="scrollableContainer_"],
+[class*="themedBackground_"] {
+    background: var(--rocky-bg-1) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+
+/* Add a subtle frame */
+
+[class*="channelTextArea_"] {
+    border: 1px solid rgba(76, 86, 106, 0.7) !important;
+}
+
+
+/* Focused text input */
+
+[class*="channelTextArea_"]:focus-within {
+    border-color: var(--rocky-frost) !important;
+}
+
+
+/* Actual textbox */
+
+[role="textbox"] {
+    color: var(--rocky-text) !important;
+}
+
+
+/* Placeholder */
+
+[role="textbox"][data-slate-editor="true"]
+    [data-slate-placeholder="true"] {
+    color: var(--rocky-text-3) !important;
+}
+
+
+/* ==========================================================
+   07. CHAT MESSAGES
+   ========================================================== */
+
+[class*="message_"] {
+    border-radius: 0 !important;
+}
+
+
+/* Hover */
+
+[class*="message_"]:hover {
+    background: rgba(67, 76, 94, 0.30) !important;
+}
+
+
+/* Message selected / reply target */
+
+[class*="replying_"] {
+    background: rgba(136, 192, 208, 0.08) !important;
+    box-shadow: inset 2px 0 var(--rocky-frost) !important;
+}
+
+
+/* Mentions */
+
+[class*="mentioned_"] {
+    background: rgba(136, 192, 208, 0.09) !important;
+}
+
+[class*="mentioned_"]::before {
+    background: var(--rocky-frost) !important;
+    width: 2px !important;
+}
+
+
+/* Your own messages - ThemeAttributes */
+
+[data-is-self="true"] {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(136, 192, 208, 0.045),
+            transparent 42%
+        ) !important;
+}
+
+
+/* ==========================================================
+   08. MENTIONS
+   ========================================================== */
+
+.mention {
+    color: var(--rocky-frost) !important;
+    background: rgba(136, 192, 208, 0.12) !important;
+    border-radius: 0 !important;
+}
+
+.mention:hover {
+    color: var(--rocky-bg-0) !important;
+    background: var(--rocky-frost) !important;
+}
+
+
+/* ==========================================================
+   09. REACTIONS
+   ========================================================== */
+
+[class*="reaction_"] {
+    background: var(--rocky-bg-1) !important;
+    border: 1px solid var(--rocky-border) !important;
+    border-radius: 0 !important;
+}
+
+[class*="reaction_"]:hover {
+    border-color: var(--rocky-frost) !important;
+    background: var(--rocky-bg-3) !important;
+}
+
+
+/* Selected reaction */
+
+[class*="reactionMe_"],
+[class*="reaction_"][class*="reactionMe"] {
+    background: rgba(136, 192, 208, 0.15) !important;
+    border-color: var(--rocky-frost) !important;
+}
+
+
+/* ==========================================================
+   10. EMBEDS
+   ========================================================== */
+
+[class*="embedFull_"],
+article[class*="embed"] {
+    background: var(--rocky-bg-1) !important;
+    border: 1px solid var(--rocky-border) !important;
+    border-radius: 0 !important;
+}
+
+
+/* ==========================================================
+   11. CODE BLOCKS
+   ========================================================== */
+
+[class*="markup_"] pre,
+[class*="markup_"] code {
+    background: var(--rocky-bg-0) !important;
+    border-color: var(--rocky-border) !important;
+    border-radius: 0 !important;
+}
+
+[class*="markup_"] code {
+    color: var(--rocky-text-2) !important;
+}
+
+
+/* Inline code */
+
+[class*="markup_"] code:not(pre code) {
+    color: var(--rocky-frost) !important;
+}
+
+
+/* ==========================================================
+   12. POPOUTS / CONTEXT MENUS / DROPDOWNS
+   ========================================================== */
+
+[role="menu"],
+[role="listbox"] {
+    background: var(--rocky-bg-0) !important;
+    border: 1px solid var(--rocky-border) !important;
+    border-radius: 0 !important;
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.42) !important;
+}
+
+
+/* Menu item */
+
+[role="menuitem"] {
+    border-radius: 0 !important;
+}
+
+
+/* Hover */
+
+[role="menuitem"]:hover,
+[role="option"]:hover {
+    background: var(--rocky-bg-3) !important;
+    color: var(--rocky-text) !important;
+}
+
+
+/* ==========================================================
+   13. MODALS
+   ========================================================== */
+
+[role="dialog"] {
+    --modal-background: var(--rocky-bg-1);
+}
+
+[role="dialog"] [class*="root_"],
+[role="dialog"] [class*="container_"] {
+    border-radius: 0 !important;
+}
+
+
+/* ==========================================================
+   14. PROFILE POPOUTS
+   ========================================================== */
+
+[class*="userPopout"],
+[class*="profilePanel"],
+[class*="userProfile"] {
+    border-radius: 0 !important;
+}
+
+
+/* ==========================================================
+   15. TOOLTIP
+   ========================================================== */
+
+[role="tooltip"] {
+    background: var(--rocky-bg-0) !important;
+    color: var(--rocky-text) !important;
+    border: 1px solid var(--rocky-border) !important;
+    border-radius: 0 !important;
+}
+
+
+/* ==========================================================
+   16. BUTTONS
+   ========================================================== */
+
+/* Primary brand buttons */
+
+button[class*="lookFilled_"][class*="colorBrand_"],
+button[class*="colorBrand_"] {
+    background: var(--rocky-frost-2) !important;
+    color: var(--rocky-bg-0) !important;
+    border-radius: 0 !important;
+}
+
+button[class*="colorBrand_"]:hover {
+    background: var(--rocky-frost) !important;
+}
+
+
+/* Secondary */
+
+button[class*="lookOutlined_"] {
+    border-color: var(--rocky-border) !important;
+    border-radius: 0 !important;
+}
+
+
+/* Danger */
+
+button[class*="colorRed_"] {
+    background: var(--rocky-red) !important;
+    border-radius: 0 !important;
+}
+
+
+/* ==========================================================
+   17. SEARCH
+   ========================================================== */
+
+[class*="searchBar_"],
+[class*="search_"] input,
+input[placeholder*="Search"],
+input[placeholder*="search"] {
+    background: var(--rocky-bg-0) !important;
+    color: var(--rocky-text) !important;
+    border-radius: 0 !important;
+}
+
+
+/* ==========================================================
+   18. SETTINGS
+   ========================================================== */
+
+[class*="sidebarRegion_"],
+[class*="contentRegion_"],
+[class*="contentRegionScroller_"] {
+    background: var(--rocky-bg-0) !important;
+}
+
+
+/* ThemeAttributes settings tabs */
+
+[data-tab-id] {
+    border-radius: 0 !important;
+}
+
+[data-tab-id]:hover {
+    background: var(--rocky-bg-3) !important;
+}
+
+
+/* ==========================================================
+   19. CARDS
+   ========================================================== */
+
+[class*="card_"] {
+    border-radius: 0 !important;
+}
+
+[class*="card_"]:hover {
+    border-color: var(--rocky-border) !important;
+}
+
+
+/* ==========================================================
+   20. SCROLLBARS
+   ========================================================== */
+
+::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--rocky-border) !important;
+    border-radius: 0 !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--rocky-frost) !important;
+}
+
+
+/* ==========================================================
+   21. TEXT SELECTION
+   ========================================================== */
+
+::selection {
+    color: var(--rocky-bg-0) !important;
+    background: var(--rocky-frost) !important;
+}
+
+
+/* ==========================================================
+   22. DIVIDERS
+   ========================================================== */
+
+[class*="divider_"],
+hr {
+    border-color: rgba(76, 86, 106, 0.6) !important;
+}
+
+
+/* ==========================================================
+   23. UNREAD / NEW MESSAGE BARS
+   ========================================================== */
+
+[class*="newMessagesBar_"],
+[class*="unread_"] {
+    border-radius: 0 !important;
+}
+
+
+/* New message bar */
+
+[class*="newMessagesBar_"] {
+    background: var(--rocky-frost-2) !important;
+    color: var(--rocky-bg-0) !important;
+}
+
+
+/* ==========================================================
+   24. STATUS / VOICE ACCENT
+   ========================================================== */
+
+[class*="speaking_"] {
+    box-shadow:
+        inset 0 0 0 2px var(--rocky-frost) !important;
+}
+
+
+/* ==========================================================
+   25. GLOBAL FOCUS
+   ========================================================== */
+
+*:focus-visible {
+    outline:
+        1px solid var(--rocky-frost) !important;
+
+    outline-offset: 2px !important;
+}
+
+
+/* ==========================================================
+   26. MICRO TRANSITIONS
+   ========================================================== */
+
+button,
+[role="menuitem"],
+[role="treeitem"],
+[class*="channel_"],
+[class*="reaction_"] {
+    transition:
+        background-color 100ms ease,
+        border-color 100ms ease,
+        color 100ms ease !important;
+}
+
+
+/* ==========================================================
+   ROCKY NORD DISCORD — FINAL COMPACT POLISH
+   ========================================================== */
+
+/* ---------- TYPOGRAPHY ---------- */
+
+/* Main UI */
+body,
+button,
+input,
+textarea,
+select {
+    font-size: 13px !important;
+}
+
+/* Channel names + sidebar */
+[class*="name_"],
+[class*="channelName_"],
+[class*="membersGroup_"] {
+    font-size: 12.5px !important;
+}
+
+/* Chat messages */
+[class*="messageContent_"],
+[class*="markup_"] {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+}
+
+/* Usernames */
+[class*="username_"] {
+    font-size: 13px !important;
+}
+
+/* Timestamps / metadata */
+[class*="timestamp_"],
+[class*="subText_"],
+[class*="headerText_"] {
+    font-size: 10.5px !important;
+}
+
+/* Member list */
+[class*="member_"] {
+    font-size: 12.5px !important;
+}
+
+/* Settings pages */
+[class*="contentRegion_"],
+[class*="sidebarRegion_"] {
+    font-size: 13px !important;
+}
+
+
+/* ---------- CHAT INPUT ---------- */
+
+[class*="channelTextArea_"] {
+    min-height: 42px !important;
+}
+
+[class*="scrollableContainer_"] {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+
+[role="textbox"] {
+    font-size: 13px !important;
+}
+
+
+/* ---------- USER PANEL ---------- */
+
+[class*="panels_"] {
+    min-height: 48px !important;
+}
+
+[class*="panels_"] button {
+    border-radius: 0 !important;
+}
+
+[class*="panels_"] button:hover {
+    background: #3B4252 !important;
+}
+
+
+/* ---------- UNREAD / NEW MESSAGE BAR ---------- */
+
+[class*="newMessagesBar_"] {
+    background: #3B4252 !important;
+    color: #ECEFF4 !important;
+    border-bottom: 1px solid #88C0D0 !important;
+    box-shadow: none !important;
+}
+
+
+/* ---------- SEARCH ---------- */
+
+[class*="searchBar_"],
+[class*="search_"] input {
+    min-height: 28px !important;
+    font-size: 12px !important;
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+button {
+    font-size: 12.5px !important;
+}
+
+
+/* ---------- SERVER / CHANNEL SPACING ---------- */
+
+[class*="channel_"] {
+    min-height: 30px !important;
+}
+
+[class*="containerDefault_"] {
+    margin-top: 1px !important;
+    margin-bottom: 1px !important;
+}
+
+
+/* ---------- SETTINGS NAV ---------- */
+
+[class*="item_"][role="tab"] {
+    min-height: 32px !important;
+    border-radius: 0 !important;
+}
+
+
+/* ---------- TOOLTIP ---------- */
+
+[role="tooltip"] {
+    font-size: 11px !important;
+}
+
+
+/* ---------- MESSAGE ACTIONS ---------- */
+
+[class*="buttons_"] {
+    border-radius: 0 !important;
+}
+
+/* ==========================================================
+   ROCKY NORD DISCORD — ULTRA COMPACT FINAL PASS
+   ========================================================== */
+
+/* Main UI */
+body,
+button,
+input,
+textarea,
+select {
+    font-size: 12px !important;
+}
+
+/* Channels / sidebar */
+[class*="name_"],
+[class*="channelName_"],
+[class*="membersGroup_"] {
+    font-size: 11.5px !important;
+    line-height: 1.25 !important;
+}
+
+/* Chat text */
+[class*="messageContent_"],
+[class*="markup_"] {
+    font-size: 12.25px !important;
+    line-height: 1.38 !important;
+}
+
+/* Usernames */
+[class*="username_"] {
+    font-size: 11.75px !important;
+}
+
+/* Timestamps / secondary metadata */
+[class*="timestamp_"],
+[class*="subText_"],
+[class*="headerText_"] {
+    font-size: 9.5px !important;
+}
+
+/* Member list */
+[class*="member_"] {
+    font-size: 11.5px !important;
+}
+
+/* Settings */
+[class*="contentRegion_"],
+[class*="sidebarRegion_"] {
+    font-size: 12px !important;
+}
+
+
+/* ---------- CHANNEL DENSITY ---------- */
+
+[class*="channel_"] {
+    min-height: 26px !important;
+}
+
+[class*="containerDefault_"] {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Category headings */
+[class*="containerDefault_"] [class*="name_"] {
+    line-height: 1.15 !important;
+}
+
+
+/* ---------- CHAT INPUT ---------- */
+
+[class*="channelTextArea_"] {
+    min-height: 36px !important;
+}
+
+[class*="scrollableContainer_"] {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+[role="textbox"] {
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+}
+
+
+/* ---------- USER PANEL ---------- */
+
+[class*="panels_"] {
+    min-height: 42px !important;
+}
+
+
+/* ---------- SEARCH ---------- */
+
+[class*="searchBar_"],
+[class*="search_"] input {
+    min-height: 25px !important;
+    font-size: 11px !important;
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+button {
+    font-size: 11.5px !important;
+}
+
+
+/* ---------- SETTINGS NAV ---------- */
+
+[class*="item_"][role="tab"] {
+    min-height: 28px !important;
+}
+
+
+/* ---------- TOOLTIP ---------- */
+
+[role="tooltip"] {
+    font-size: 10px !important;
+}
+
+
+/* ---------- CHAT SPACING ---------- */
+
+/* Slightly tighter message blocks */
+[class*="message_"] {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+}
+
+/* Replies / embeds stay readable */
+[class*="embedFull_"],
+article[class*="embed"] {
+    font-size: 11.5px !important;
+}
+
+
+/* ---------- SCROLLBAR ---------- */
+
+::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+}

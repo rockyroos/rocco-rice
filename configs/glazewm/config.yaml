@@ -1,0 +1,319 @@
+# GlazeWM v3.10.x - optimized dual-monitor config
+# Assumption: landscape MAIN monitor is physically LEFT, portrait 1080p monitor is RIGHT.
+# IMPORTANT: bind_to_monitor is based on physical left-to-right order:
+#   0 = leftmost display, 1 = the next display to the right.
+# If your portrait display is physically LEFT of the landscape display,
+# swap bind_to_monitor 0 <-> 1 in the workspaces section.
+#
+# Portrait note: GlazeWM still does not natively support automatic per-monitor layouts.
+# Use Alt+V on portrait workspaces when you want windows stacked vertically.
+
+# -----------------------------------------------------------------------------
+# GENERAL
+# -----------------------------------------------------------------------------
+general:
+  startup_commands: []
+  shutdown_commands: []
+  config_reload_commands: []
+
+  # Keyboard-driven setup: cursor movement does not steal focus.
+  focus_follows_cursor: false
+  toggle_workspace_on_refocus: false
+
+  # Very useful on dual monitors: mouse follows keyboard focus when changing display.
+  cursor_jump:
+    enabled: true
+    trigger: "monitor_focus"
+
+  # Recommended modern Windows workspace-hiding method.
+  hide_method: "cloak"
+  show_all_in_taskbar: false
+
+# -----------------------------------------------------------------------------
+# GAPS
+# Compact enough for 1080px portrait, but still visually separated.
+# -----------------------------------------------------------------------------
+gaps:
+  scale_with_dpi: true
+  inner_gap: "8px"
+  outer_gap:
+    top: "8px"
+    right: "8px"
+    bottom: "8px"
+    left: "8px"
+
+  # Slightly more breathing room when only one tiled window is open.
+  single_window_outer_gap:
+    top: "12px"
+    right: "12px"
+    bottom: "12px"
+    left: "12px"
+
+# -----------------------------------------------------------------------------
+# WINDOW EFFECTS
+# Focus border is especially helpful with two monitors.
+# -----------------------------------------------------------------------------
+window_effects:
+  focused_window:
+    border:
+      enabled: true
+      color: "#8dbcff"
+    hide_title_bar:
+      enabled: false
+    corner_style:
+      enabled: false
+      style: "square"
+    transparency:
+      enabled: false
+      opacity: "100%"
+
+  other_windows:
+    border:
+      enabled: false
+      color: "#a1a1a1"
+    hide_title_bar:
+      enabled: false
+    corner_style:
+      enabled: false
+      style: "square"
+    transparency:
+      enabled: false
+      opacity: "100%"
+
+# -----------------------------------------------------------------------------
+# WINDOW BEHAVIOR
+# -----------------------------------------------------------------------------
+window_behavior:
+  initial_state: "tiling"
+  state_defaults:
+    floating:
+      centered: true
+      shown_on_top: false
+    fullscreen:
+      maximized: false
+      shown_on_top: false
+
+# -----------------------------------------------------------------------------
+# WORKSPACES
+# Main landscape: 1-5
+# Portrait 1080p: 6-9
+# keep_alive keeps the monitor/workspace mapping stable even while empty.
+# -----------------------------------------------------------------------------
+workspaces:
+  - name: "1"
+    bind_to_monitor: 0
+    keep_alive: true
+  - name: "2"
+    bind_to_monitor: 0
+    keep_alive: true
+  - name: "3"
+    bind_to_monitor: 0
+    keep_alive: true
+  - name: "4"
+    bind_to_monitor: 0
+    keep_alive: true
+  - name: "5"
+    bind_to_monitor: 0
+    keep_alive: true
+
+  - name: "6"
+    bind_to_monitor: 1
+    keep_alive: true
+  - name: "7"
+    bind_to_monitor: 1
+    keep_alive: true
+  - name: "8"
+    bind_to_monitor: 1
+    keep_alive: true
+  - name: "9"
+    bind_to_monitor: 1
+    keep_alive: true
+
+# -----------------------------------------------------------------------------
+# WINDOW RULES
+# Based on the current official sample config + your existing utility rules.
+# -----------------------------------------------------------------------------
+window_rules:
+  # Bars/widgets/desktop overlays should never be tiled.
+  - commands: ["ignore"]
+    match:
+      - window_process: { regex: "(?i)^(yasb|zebar|Rainmeter)$" }
+
+      # Browser picture-in-picture.
+      - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
+        window_class: { regex: "Chrome_WidgetWin_1|MozillaDialogClass" }
+
+      # PowerToys overlays / Command Palette / Peek.
+      - window_process: { equals: "PowerToys" }
+        window_class: { regex: "HwndWrapper\\[PowerToys\\.PowerAccent.*?\\]" }
+      - window_title: { equals: "Command Palette" }
+        window_class: { equals: "WinUIDesktopWin32WindowClass" }
+      - window_process: { equals: "PowerToys" }
+        window_title: { regex: ".*? - Peek" }
+
+      # Lively wallpaper windows.
+      - window_process: { equals: "Lively" }
+        window_class: { regex: "HwndWrapper" }
+
+      # Microsoft Office helper / popup windows (not main app windows).
+      - window_process: { equals: "EXCEL" }
+        window_class: { not_regex: "XLMAIN" }
+      - window_process: { equals: "WINWORD" }
+        window_class: { not_regex: "OpusApp" }
+      - window_process: { equals: "POWERPNT" }
+        window_class: { not_regex: "PPTFrameClass" }
+
+  # Small utility windows work better floating and centered.
+  - commands: ["set-floating --centered"]
+    match:
+      - window_process: { regex: "(?i)^(taskmgr|calc|SnippingTool)$" }
+
+# -----------------------------------------------------------------------------
+# RESIZE MODE
+# Alt+R -> resize with H/J/K/L or arrow keys -> Esc/Enter/Alt+R to exit.
+# -----------------------------------------------------------------------------
+binding_modes:
+  - name: "resize"
+    keybindings:
+      - commands: ["resize --width -2%"]
+        bindings: ["h", "left"]
+      - commands: ["resize --width +2%"]
+        bindings: ["l", "right"]
+      - commands: ["resize --height +2%"]
+        bindings: ["k", "up"]
+      - commands: ["resize --height -2%"]
+        bindings: ["j", "down"]
+      - commands: ["wm-disable-binding-mode --name resize"]
+        bindings: ["escape", "enter", "alt+r"]
+
+# -----------------------------------------------------------------------------
+# KEYBINDINGS
+# HJKL and arrow-key aliases are both included.
+# -----------------------------------------------------------------------------
+keybindings:
+  # --- Launchers --------------------------------------------------------------
+  - commands: ["shell-exec wt"]
+    bindings: ["alt+enter"]
+  - commands: ["shell-exec explorer"]
+    bindings: ["alt+b"]
+
+  # --- Focus windows / cross monitor -----------------------------------------
+  - commands: ["focus --direction left"]
+    bindings: ["alt+h", "alt+left"]
+  - commands: ["focus --direction right"]
+    bindings: ["alt+l", "alt+right"]
+  - commands: ["focus --direction up"]
+    bindings: ["alt+k", "alt+up"]
+  - commands: ["focus --direction down"]
+    bindings: ["alt+j", "alt+down"]
+
+  # Jump directly to the currently displayed workspace on the other monitor.
+  - commands: ["focus --workspace-in-direction left"]
+    bindings: ["alt+ctrl+h", "alt+ctrl+left"]
+  - commands: ["focus --workspace-in-direction right"]
+    bindings: ["alt+ctrl+l", "alt+ctrl+right"]
+
+  # --- Move windows -----------------------------------------------------------
+  - commands: ["move --direction left"]
+    bindings: ["alt+shift+h", "alt+shift+left"]
+  - commands: ["move --direction right"]
+    bindings: ["alt+shift+l", "alt+shift+right"]
+  - commands: ["move --direction up"]
+    bindings: ["alt+shift+k", "alt+shift+up"]
+  - commands: ["move --direction down"]
+    bindings: ["alt+shift+j", "alt+shift+down"]
+
+  # Send the focused window straight to the workspace displayed on the other monitor.
+  - commands: ["move --workspace-in-direction left"]
+    bindings: ["alt+ctrl+shift+h", "alt+ctrl+shift+left"]
+  - commands: ["move --workspace-in-direction right"]
+    bindings: ["alt+ctrl+shift+l", "alt+ctrl+shift+right"]
+
+  # --- Layout / state ---------------------------------------------------------
+  - commands: ["wm-enable-binding-mode --name resize"]
+    bindings: ["alt+r"]
+
+  # Pause GlazeWM completely (great for games / apps that need Alt shortcuts).
+  - commands: ["wm-toggle-pause"]
+    bindings: ["alt+shift+p"]
+
+  # Toggle where the next tiled window is inserted.
+  # On a portrait screen, vertical tiling is often more useful.
+  - commands: ["toggle-tiling-direction"]
+    bindings: ["alt+v"]
+
+  # Cycle focus between tiling, floating and fullscreen windows.
+  - commands: ["wm-cycle-focus"]
+    bindings: ["alt+space"]
+
+  - commands: ["toggle-floating --centered"]
+    bindings: ["alt+shift+space"]
+  - commands: ["toggle-tiling"]
+    bindings: ["alt+t"]
+  - commands: ["toggle-fullscreen"]
+    bindings: ["alt+f"]
+  - commands: ["toggle-minimized"]
+    bindings: ["alt+m"]
+
+  # Keep your old Alt+Q muscle memory, plus the safer official-style shortcut.
+  - commands: ["close"]
+    bindings: ["alt+q", "alt+shift+q"]
+
+  # --- Workspace navigation --------------------------------------------------
+  # Cycle workspaces ONLY on the currently focused monitor.
+  - commands: ["focus --prev-active-workspace-on-monitor"]
+    bindings: ["alt+a"]
+  - commands: ["focus --next-active-workspace-on-monitor"]
+    bindings: ["alt+s"]
+
+  # Jump back to the most recently focused workspace.
+  - commands: ["focus --recent-workspace"]
+    bindings: ["alt+d"]
+
+  # Direct workspace focus.
+  - commands: ["focus --workspace 1"]
+    bindings: ["alt+1"]
+  - commands: ["focus --workspace 2"]
+    bindings: ["alt+2"]
+  - commands: ["focus --workspace 3"]
+    bindings: ["alt+3"]
+  - commands: ["focus --workspace 4"]
+    bindings: ["alt+4"]
+  - commands: ["focus --workspace 5"]
+    bindings: ["alt+5"]
+  - commands: ["focus --workspace 6"]
+    bindings: ["alt+6"]
+  - commands: ["focus --workspace 7"]
+    bindings: ["alt+7"]
+  - commands: ["focus --workspace 8"]
+    bindings: ["alt+8"]
+  - commands: ["focus --workspace 9"]
+    bindings: ["alt+9"]
+
+  # Move window to workspace AND follow it there.
+  - commands: ["move --workspace 1", "focus --workspace 1"]
+    bindings: ["alt+shift+1"]
+  - commands: ["move --workspace 2", "focus --workspace 2"]
+    bindings: ["alt+shift+2"]
+  - commands: ["move --workspace 3", "focus --workspace 3"]
+    bindings: ["alt+shift+3"]
+  - commands: ["move --workspace 4", "focus --workspace 4"]
+    bindings: ["alt+shift+4"]
+  - commands: ["move --workspace 5", "focus --workspace 5"]
+    bindings: ["alt+shift+5"]
+  - commands: ["move --workspace 6", "focus --workspace 6"]
+    bindings: ["alt+shift+6"]
+  - commands: ["move --workspace 7", "focus --workspace 7"]
+    bindings: ["alt+shift+7"]
+  - commands: ["move --workspace 8", "focus --workspace 8"]
+    bindings: ["alt+shift+8"]
+  - commands: ["move --workspace 9", "focus --workspace 9"]
+    bindings: ["alt+shift+9"]
+
+  # --- WM maintenance --------------------------------------------------------
+  - commands: ["wm-reload-config"]
+    bindings: ["alt+shift+r"]
+  - commands: ["wm-redraw"]
+    bindings: ["alt+shift+w"]
+  - commands: ["wm-exit"]
+    bindings: ["alt+shift+e"]
