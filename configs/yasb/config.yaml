@@ -1,5 +1,6 @@
-# One Dark Nord x Catppuccin — authored for YASB 2.0.7 preview-9c1316e5.
-# No credentials required. Primary display gets the only audio visualizer.
+# Public-safe copy of my current YASB config, captured 15 September 2026.
+# Replace the portrait monitor name (HP E231) with your own if needed.
+# No credentials required. Primary display gets the only YASB/Cava visualizer.
 watch_stylesheet: true
 watch_config: true
 debug: false
@@ -22,7 +23,6 @@ bars:
     padding: {top: 0, left: 0, bottom: 0, right: 0}
     animation: {enabled: false}
     widgets:
-      # --- ADDED WORKSPACES WIDGET TO THE LEFT SIDE ---
       left: ["home", "windows_workspaces", "clock", "traffic", "cpu", "memory"]
       center: ["active_window"]
       right: ["cava", "media_art", "media", "sound", "power_menu"]
@@ -48,15 +48,15 @@ bars:
       center: ["active_window"]
       right: ["clock", "sound"]
 widgets:
-  # --- NEW WINDOWS DESKTOPS REGISTRATION ---
-  windows_workspaces: 
-    type: "yasb.windows_desktops.WorkspaceWidget" 
-    options: 
-      label_workspace_btn: "{index}" 
-      label_workspace_active_btn: "[{index}]" 
-      callbacks: 
-        on_left: "activate_workspace" 
-        on_middle: "do_nothing" 
+  # NOTE: this is YASB's Windows virtual-desktop widget, not a GlazeWM workspace widget.
+  windows_workspaces:
+    type: "yasb.windows_desktops.WorkspaceWidget"
+    options:
+      label_workspace_btn: "{index}"
+      label_workspace_active_btn: "[{index}]"
+      callbacks:
+        on_left: "activate_workspace"
+        on_middle: "do_nothing"
         on_right: "toggle_context_menu"
 
   home:
@@ -76,7 +76,6 @@ widgets:
         - {title: "Downloads", path: "C:/Users/YOUR_USERNAME/Downloads"}
         - {title: "Documents", path: "C:/Users/YOUR_USERNAME/Documents"}
         - {title: "Terminal", command: "wt.exe"}
-        - {title: "Theme pack", path: "C:/Users/YOUR_USERNAME/Documents/OneDark-Nord-Catppuccin"}
   clock:
     type: "yasb.clock.ClockWidget"
     options:
@@ -164,7 +163,7 @@ widgets:
       show_thumbnail: true
       controls_only: false
       controls_left: true
-      scrolling_label: 
+      scrolling_label:
         enabled: true
         update_interval_ms: 30
         style: "left"
