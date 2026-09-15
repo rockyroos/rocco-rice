@@ -38,24 +38,24 @@ Grayjay, Firefox and the terminal visualizer across the desktop.
 
 | Part | What I use |
 |---|---|
-| Window manager | GlazeWM |
-| Top bar | YASB |
-| Taskbar | Windhawk |
-| Start menu | Windhawk |
-| Explorer | Windhawk |
-| App launcher | Flow Launcher — Nord Darker |
-| Context menu | Nilesoft Shell |
-| Window switcher | CKFlip3D |
-| Terminal | Windows Terminal + PowerShell 7 |
-| System info | Fastfetch |
-| System monitor | btop4win++ |
-| Desktop clock | Rainmeter — NordClock |
-| Desktop visualizer | Rainmeter — Fountain of Colors |
-| Top-bar visualizer | Cava through YASB |
-| Spotify | Spicetify — Sleek + Nord + my overrides |
-| Discord | Vencord + my QuickCSS |
-| Main font | JetBrains Mono / JetBrainsMono Nerd Font |
-| Wallpapers | Kagurabachi |
+| Window manager | [GlazeWM](https://github.com/glzr-io/glazewm) |
+| Top bar | [YASB](https://github.com/amnweb/yasb) |
+| Taskbar | [Windhawk](https://windhawk.net/) |
+| Start menu | [Windhawk](https://windhawk.net/) |
+| Explorer | [Windhawk](https://windhawk.net/) |
+| App launcher | [Flow Launcher](https://www.flowlauncher.com/) — Nord Darker |
+| Context menu | [Nilesoft Shell](https://nilesoft.org/) |
+| Window switcher | [CKFlip3D](https://github.com/CYMERKAROL/CKFlip3D) |
+| Terminal | [Windows Terminal](https://github.com/microsoft/terminal) + [PowerShell 7](https://github.com/PowerShell/PowerShell) |
+| System info | [Fastfetch](https://github.com/fastfetch-cli/fastfetch) |
+| System monitor | [btop4win++](https://github.com/aristocratos/btop4win) |
+| Desktop clock | [Rainmeter](https://www.rainmeter.net/) — NordClock |
+| Desktop visualizer | [Rainmeter](https://www.rainmeter.net/) — [Fountain of Colors](https://github.com/alatsombath/Fountain-of-Colors) |
+| Top-bar visualizer | [Cava](https://github.com/karlstav/cava) through [YASB](https://github.com/amnweb/yasb) |
+| Spotify | [Spicetify](https://spicetify.app/) — [Sleek](https://github.com/spicetify/spicetify-themes/tree/master/Sleek) + Nord + my overrides |
+| Discord | [Vencord](https://vencord.dev/) + my QuickCSS |
+| Main font | [JetBrains Mono](https://www.jetbrains.com/lp/mono/) / [Nerd Fonts](https://www.nerdfonts.com/) |
+| Wallpapers | Kagurabachi — [Wallhaven](https://wallhaven.cc/) + official X posts |
 
 ## The general idea
 
