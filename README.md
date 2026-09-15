@@ -43,7 +43,7 @@ Grayjay, Firefox and the terminal visualizer across the desktop.
 | Taskbar | Windhawk |
 | Start menu | Windhawk |
 | Explorer | Windhawk |
-| App launcher | Flow Launcher — Dark Nord |
+| App launcher | Flow Launcher — Nord Darker |
 | Context menu | Nilesoft Shell |
 | Window switcher | CKFlip3D |
 | Terminal | Windows Terminal + PowerShell 7 |
@@ -83,7 +83,7 @@ A few things are intentionally **not** included:
 - Kagurabachi wallpaper files
 - my local Rainmeter audio-device ID
 - the full Sleek Spicetify theme
-- third-party themes that are already available from their original authors
+- third-party themes/skins that are already available from their original authors
 
 ## GlazeWM
 
@@ -106,7 +106,9 @@ The pause shortcut is especially useful for games or apps that use a lot of Alt-
 
 ## YASB
 
-YASB provides the thin top bar on both displays. The main monitor includes workspaces, clock, network traffic, CPU/RAM, active window, Cava, media, sound and power controls. The portrait display is deliberately simpler.
+YASB provides the thin top bar on both displays. The main monitor includes the Windows virtual-desktop widget, clock, network traffic, CPU/RAM, active window, Cava, media, sound and power controls. The portrait display is deliberately simpler.
+
+The Windows desktop widget is separate from GlazeWM's own workspace system; I use both in the current setup.
 
 ## Windhawk
 
@@ -114,9 +116,11 @@ Windhawk does most of the Windows-side customization: taskbar styling and labels
 
 The current taskbar started from the **RosePine** preset but is heavily pushed toward the rest of the Nord setup. The Start menu uses **SideBySideMinimal** as a base with Nord colors, square corners and JetBrains Mono overrides.
 
+The repo includes both a readable summary and a snapshot of the exact settings for the enabled mods. I still recommend copying settings into the matching mod rather than treating it as a one-click import.
+
 ## Flow Launcher
 
-I use **Dark Nord** as-is. I haven't modified the theme itself, so this repo only documents it rather than redistributing it.
+I use **Nord Darker** as-is. I haven't modified the theme itself, so this repo only documents it rather than redistributing it.
 
 ## Nilesoft Shell
 
@@ -129,7 +133,7 @@ I currently use Rainmeter for two things:
 - **NordClock** — large desktop clock/date
 - **Fountain of Colors** — the equalizer above the clock
 
-The Fountain of Colors config in this repo has my local audio endpoint removed, because that value is machine-specific.
+Fountain of Colors is a third-party skin, so I don't redistribute the skin itself. The repo links to the original project and documents the settings I use. My machine-specific audio endpoint is intentionally left out.
 
 ## Spotify
 
