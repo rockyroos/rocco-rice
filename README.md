@@ -8,6 +8,32 @@ I'm still learning, so this repo isn't meant to be a definitive Windows customiz
 
 A lot of the tools, themes and ideas here were made by other people. I mainly combined, configured and adjusted them to fit my own workflow and visual style.
 
+![Clean desktop](screenshots/01-desktop-clean.png)
+
+## Screenshots
+
+### Start menu & Flow Launcher
+
+![Start menu and Flow Launcher](screenshots/02-start-flow.png)
+
+### Daily setup
+
+Spotify, Explorer, btop4win++ and Fastfetch running together.
+
+![Spotify, Explorer, btop and Fastfetch](screenshots/03-spotify-system.png)
+
+### Window switching
+
+CKFlip3D in the middle of the workflow.
+
+![CKFlip3D window switcher](screenshots/04-window-switcher.png)
+
+### App layout
+
+Grayjay, Firefox and the terminal visualizer across the desktop.
+
+![Grayjay, Firefox and terminal visualizer](screenshots/05-app-layout.png)
+
 ## Setup
 
 | Part | What I use |
