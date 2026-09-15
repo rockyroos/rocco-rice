@@ -4,6 +4,8 @@ These are the Windhawk mods currently used by this setup.
 
 The list below was checked against the live Windhawk installation on 15 September 2026 and matches the current enabled mods shown in the app.
 
+For reproducibility, [`current-settings.json`](current-settings.json) contains the exact settings snapshot for the **enabled** mods listed below. It is documentation, not a one-click import file; Windhawk settings are version-sensitive, so I recommend copying the settings into the matching mod rather than importing a registry dump wholesale.
+
 ## Enabled mods
 
 | Mod | Version | Notes |
@@ -92,4 +94,4 @@ The Taskbar Styler uses `RosePine` as a base, but the visible task buttons, tray
 
 ## Note
 
-Windhawk settings are version-sensitive. I recommend copying the parts you want instead of importing a registry snapshot wholesale.
+Windhawk settings can break or change after Windows or mod updates. Back up a working setup before applying style changes.
