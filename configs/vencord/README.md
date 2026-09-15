@@ -18,7 +18,7 @@ The goal is to keep Discord visually consistent with the rest of the desktop: No
 ## Notes
 
 - `ThemeAttributes` is used for a small amount of attribute-based styling, such as the subtle styling for my own messages.
-- I keep Discord's `ClientTheme` disabled so it doesn't fight the custom palette.
+- If Discord's `ClientTheme` overrides the custom palette, disable it.
 - Discord changes class names fairly often, so parts of the CSS may need small fixes after updates.
 - This repo only includes my QuickCSS and setup notes. Vencord itself is not redistributed here.
 
